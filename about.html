@@ -52,7 +52,6 @@
     .nav-links {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -61,7 +60,6 @@
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
-      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -94,10 +92,27 @@
       font-weight: 500;
     }
 
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
     /* Hero Section */
     .hero {
       height: 50vh;
-      min-height: 400px;
       width: 100%;
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/about1.avif');
       background-size: cover;
@@ -106,7 +121,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 20px 20px;
+      padding-top: 80px;
     }
 
     .hero-content h2 {
@@ -174,9 +189,6 @@
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 15px 30px rgba(255, 157, 0, 0.2);
-      height: 100%;
-      display: flex;
-      align-items: center;
     }
 
     .about-image img {
@@ -204,10 +216,6 @@
       padding: 30px;
       backdrop-filter: blur(10px);
       transition: transform 0.3s;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .mission:hover, .vision:hover {
@@ -245,10 +253,6 @@
       text-align: center;
       backdrop-filter: blur(10px);
       transition: transform 0.3s;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     .value-card:hover {
@@ -297,9 +301,6 @@
       text-align: center;
       backdrop-filter: blur(10px);
       transition: transform 0.3s;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
     }
 
     .team-member:hover {
@@ -347,10 +348,6 @@
 
     .team-info {
       padding: 25px 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .team-info h4 {
@@ -392,7 +389,7 @@
       background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/about2.avif');
       background-size: cover;
       background-position: center;
-      padding: 80px 20px;
+      padding: 80px 0;
       text-align: center;
       border-radius: 15px;
     }
@@ -468,6 +465,7 @@
     .footer-column p {
       line-height: 1.6;
       margin-bottom: 20px;
+      color: #ddd;
     }
 
     .footer-links {
@@ -529,24 +527,6 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 1100px) {
-      .navbar {
-        padding: 20px 40px;
-      }
-      
-      .about-container {
-        padding: 80px 40px;
-      }
-      
-      .footer-content {
-        padding: 0 40px;
-      }
-      
-      .copyright {
-        margin: 0 40px;
-      }
-    }
-
     @media (max-width: 968px) {
       .about-content,
       .mission-vision {
@@ -555,45 +535,47 @@
       
       .about-image {
         order: -1;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      
-      .hero-content h2 {
-        font-size: 42px;
       }
     }
 
     @media (max-width: 768px) {
       .navbar {
         padding: 15px 20px;
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .nav-links {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-      }
-      
-      .nav-links a {
-        margin: 0 10px;
-      }
-      
-      .user-account {
-        margin-left: 0;
-        margin-top: 10px;
       }
       
       .navbar h1 {
         font-size: 28px;
       }
       
-      .hero {
-        height: 40vh;
-        min-height: 350px;
-        padding-top: 120px;
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 40px;
+        transition: left 0.3s ease;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-links a {
+        margin: 15px 0;
+        font-size: 18px;
+      }
+      
+      .user-account {
+        margin: 20px 0 0 0;
+      }
+      
+      .menu-toggle {
+        display: flex;
       }
       
       .hero-content h2 {
@@ -602,80 +584,18 @@
       
       .hero-content p {
         font-size: 18px;
-        padding: 0 20px;
       }
       
       .about-container {
         padding: 60px 20px;
       }
       
-      .section-title {
-        font-size: 30px;
-        margin-bottom: 40px;
-      }
-      
-      .about-text h3 {
-        font-size: 24px;
-      }
-      
-      .mission-vision {
-        gap: 20px;
-      }
-      
-      .mission, .vision {
-        padding: 20px;
-      }
-      
       .footer-content {
         padding: 0 20px;
-        gap: 30px;
       }
       
       .copyright {
         margin: 0 20px;
-      }
-      
-      .cta-section {
-        padding: 60px 20px;
-      }
-      
-      .cta-section h2 {
-        font-size: 28px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-content h2 {
-        font-size: 28px;
-      }
-      
-      .hero-content p {
-        font-size: 16px;
-      }
-      
-      .section-title {
-        font-size: 26px;
-      }
-      
-      .about-text h3 {
-        font-size: 22px;
-      }
-      
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .nav-links a {
-        font-size: 14px;
-        margin: 0 8px;
-      }
-      
-      .user-name {
-        font-size: 14px;
       }
     }
   </style>
@@ -685,7 +605,12 @@
   <!-- Navbar -->
   <div class="navbar">
     <h1>DRIVE U</h1>
-    <div class="nav-links">
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
       <a href="home.html">Home</a>
       <a href="fleet.html">Fleet</a>
       <a href="economy.html">Economy</a>
@@ -894,6 +819,14 @@
     function toggleUserMenu() {
       alert('User account menu would open here. In a complete application, this would show options like Profile, Settings, and Logout.');
     }
+
+    // Mobile menu functionality
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    
+    mobileMenu.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
   </script>
 
 </body>
