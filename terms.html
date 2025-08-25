@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drive U - Booking</title>
+  <title>Drive U - Terms & Conditions</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -105,23 +105,47 @@
       cursor: pointer;
     }
 
-    /* Booking Section */
-    .booking-container {
-      padding: 120px 5% 80px;
+    /* Hero Section */
+    .hero {
+      height: 40vh;
+      width: 100%;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/about2.avif');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-content h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Terms Content */
+    .terms-container {
+      padding: 80px 5%;
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
       font-size: 36px;
       position: relative;
       padding-bottom: 15px;
-      grid-column: 1 / -1;
     }
 
     .section-title::after {
@@ -136,193 +160,65 @@
       border-radius: 2px;
     }
 
-    .car-selected {
+    .terms-content {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 30px;
-      text-align: center;
+      padding: 40px;
       backdrop-filter: blur(10px);
-      grid-column: 1;
+      margin-bottom: 40px;
     }
 
-    .car-selected h3 {
+    .terms-section {
+      margin-bottom: 40px;
+    }
+
+    .terms-section h3 {
       font-size: 24px;
-      color: #ffae42;
-      margin-bottom: 10px;
-    }
-
-    .car-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin: 15px 0;
-    }
-
-    .car-details {
-      display: flex;
-      justify-content: space-between;
-      margin: 15px 0;
-      font-size: 14px;
-      color: #ccc;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .car-details span {
-      flex: 1;
-      min-width: 100px;
-    }
-
-    .booking-form {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 25px;
-      backdrop-filter: blur(10px);
-      grid-column: 2;
-    }
-
-    .cost-summary {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 25px;
-      backdrop-filter: blur(10px);
-      grid-column: 1;
-      margin-top: 0;
-    }
-
-    .cost-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .cost-total {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 2px solid rgba(255, 255, 255, 0.2);
-      font-size: 20px;
-      font-weight: 700;
-      color: #ffae42;
-    }
-
-    .form-group {
       margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 16px;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: #ccc;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .form-row .form-group {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .insurance-options {
-      margin: 20px 0;
-    }
-
-    .insurance-options h3 {
-      margin-bottom: 15px;
-      font-size: 18px;
-    }
-
-    .insurance-option {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .insurance-option input {
-      margin-right: 10px;
-    }
-
-    .terms-conditions {
-      margin: 20px 0;
-    }
-
-    .terms-option {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .terms-option input {
-      margin-right: 10px;
-    }
-
-    .terms-link {
       color: #ffae42;
-      text-decoration: none;
-      margin-left: 5px;
+      display: flex;
+      align-items: center;
     }
 
-    .terms-link:hover {
-      text-decoration: underline;
+    .terms-section h3 i {
+      margin-right: 10px;
+      font-size: 28px;
     }
 
-    .btn {
-      display: inline-block;
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #ff4d4d, #ff9900);
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      font-size: 18px;
-      margin-top: 10px;
+    .terms-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: #ddd;
     }
 
-    .btn:disabled {
-      background: #666;
-      cursor: not-allowed;
+    .terms-list {
+      list-style-type: none;
+      margin: 20px 0;
     }
 
-    .btn:disabled:hover {
-      transform: none;
-      box-shadow: none;
+    .terms-list li {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+      color: #ddd;
+      line-height: 1.6;
     }
 
-    .btn:hover {
-      background: linear-gradient(135deg, #ff1a1a, #ff6600);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(255, 157, 0, 0.3);
+    .terms-list li:before {
+      content: '•';
+      color: #ffae42;
+      font-size: 20px;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+
+    .highlight {
+      background: rgba(255, 174, 66, 0.1);
+      border-left: 4px solid #ffae42;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
     }
 
     /* Footer */
@@ -427,8 +323,8 @@
         font-size: 32px;
       }
       
-      .booking-container {
-        padding: 120px 4% 80px;
+      .hero-content h2 {
+        font-size: 42px;
       }
     }
 
@@ -442,22 +338,21 @@
         font-size: 15px;
       }
       
-      .booking-container {
-        grid-template-columns: 1fr;
-        gap: 25px;
+      .hero {
+        height: 35vh;
       }
       
-      .car-selected, .booking-form, .cost-summary {
-        grid-column: 1;
+      .hero-content h2 {
+        font-size: 38px;
+      }
+      
+      .hero-content p {
+        font-size: 18px;
       }
       
       .section-title {
         font-size: 32px;
-        margin-bottom: 30px;
-      }
-      
-      .footer-content {
-        padding: 0 4%;
+        margin-bottom: 50px;
       }
     }
 
@@ -502,34 +397,49 @@
         margin-top: 10px;
       }
       
-      .booking-container {
-        padding: 100px 4% 60px;
+      .hero {
+        height: 30vh;
+        padding-top: 100px;
+      }
+      
+      .hero-content h2 {
+        font-size: 32px;
+      }
+      
+      .hero-content p {
+        font-size: 16px;
+        padding: 0 15px;
+      }
+      
+      .terms-container {
+        padding: 60px 4%;
       }
       
       .section-title {
         font-size: 28px;
+        margin-bottom: 40px;
       }
       
-      .form-row {
-        flex-direction: column;
-        gap: 0;
+      .terms-content {
+        padding: 30px;
       }
       
-      .form-row .form-group {
-        min-width: 100%;
+      .terms-section h3 {
+        font-size: 22px;
       }
       
-      .car-details {
-        flex-direction: column;
-        gap: 8px;
+      .terms-section h3 i {
+        font-size: 24px;
       }
       
       .footer-content {
+        padding: 0 4%;
         gap: 30px;
       }
       
       .copyright {
         margin: 0 4%;
+        padding-top: 20px;
       }
     }
 
@@ -546,46 +456,68 @@
         display: none;
       }
       
-      .booking-container {
-        padding: 90px 4% 50px;
+      .hero {
+        height: 25vh;
+        padding-top: 100px;
+      }
+      
+      .hero-content h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+      }
+      
+      .hero-content p {
+        font-size: 15px;
+      }
+      
+      .terms-container {
+        padding: 40px 4%;
       }
       
       .section-title {
         font-size: 26px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
       
-      .car-selected, .booking-form, .cost-summary {
-        padding: 20px;
+      .terms-content {
+        padding: 25px 20px;
       }
       
-      .car-selected h3 {
-        font-size: 22px;
+      .terms-section {
+        margin-bottom: 30px;
       }
       
-      .car-image {
-        height: 180px;
+      .terms-section h3 {
+        font-size: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
       
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        padding: 10px 12px;
-        font-size: 15px;
+      .terms-section h3 i {
+        margin-right: 0;
       }
       
-      .btn {
-        padding: 12px;
-        font-size: 16px;
+      .terms-list li {
+        padding-left: 25px;
+        font-size: 14px;
       }
       
-      .cost-total {
-        font-size: 18px;
+      .highlight {
+        padding: 12px 15px;
       }
       
       .footer-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
+      }
+      
+      .footer-column h3 {
+        font-size: 18px;
+      }
+      
+      .footer-links a {
+        font-size: 14px;
       }
       
       .social-icons {
@@ -606,29 +538,24 @@
         font-size: 12px;
       }
       
+      .hero {
+        height: 22vh;
+      }
+      
+      .hero-content h2 {
+        font-size: 24px;
+      }
+      
+      .hero-content p {
+        font-size: 14px;
+      }
+      
       .section-title {
         font-size: 24px;
       }
       
-      .car-selected, .booking-form, .cost-summary {
-        padding: 15px;
-      }
-      
-      .car-selected h3 {
-        font-size: 20px;
-      }
-      
-      .car-image {
-        height: 160px;
-      }
-      
-      .insurance-options h3 {
-        font-size: 16px;
-      }
-      
-      .btn {
-        padding: 10px;
-        font-size: 15px;
+      .terms-section h3 {
+        font-size: 17px;
       }
     }
   </style>
@@ -656,120 +583,119 @@
     </div>
   </div>
 
-  <!-- Booking Section -->
-  <div class="booking-container">
-    <h2 class="section-title">Book Your Car</h2>
-    
-    <div class="car-selected">
-      <h3 id="selected-car-name">Car Name</h3>
-      <img id="selected-car-image" src="" alt="Selected Car" class="car-image">
-      <div class="car-details">
-        <span id="car-type"></span>
-        <span id="car-fuel"></span>
-        <span id="car-seats"></span>
-      </div>
-      <div class="car-price" id="car-price">₹0 / day</div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Terms & Conditions</h2>
+      <p>Please read these terms carefully before using our services</p>
     </div>
-    
-    <form class="booking-form" onsubmit="handleBooking(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" required>
-        </div>
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="dl-number">Driving License Number</label>
-          <input type="text" id="dl-number" required>
-        </div>
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label for="pickup-date">Pickup Date</label>
-          <input type="date" id="pickup-date" required>
-        </div>
-        <div class="form-group">
-          <label for="return-date">Return Date</label>
-          <input type="date" id="return-date" required>
-        </div>
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label for="pickup-location">Pickup Location</label>
-          <select id="pickup-location" required>
-            <option value="">Select Location</option>
-            <option value="mumbai">Mumbai</option>
-            <option value="delhi">Delhi</option>
-            <option value="bangalore">Bangalore</option>
-            <option value="chennai">Chennai</option>
-            <option value="kolkata">Kolkata</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="return-location">Return Location</label>
-          <select id="return-location" required>
-            <option value="">Select Location</option>
-            <option value="mumbai">Mumbai</option>
-            <option value="delhi">Delhi</option>
-            <option value="bangalore">Bangalore</option>
-            <option value="chennai">Chennai</option>
-            <option value="kolkata">Kolkata</option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="address">Address</label>
-        <textarea id="address" rows="3" required></textarea>
-      </div>
-      
-      <div class="insurance-options">
-        <h3>Insurance Options</h3>
-        <div class="insurance-option">
-          <input type="checkbox" id="basic-insurance" name="insurance" value="basic" onchange="calculateTotalCost()">
-          <label for="basic-insurance">Basic Insurance (₹199/day)</label>
-        </div>
-        <div class="insurance-option">
-          <input type="checkbox" id="premium-insurance" name="insurance" value="premium" onchange="calculateTotalCost()">
-          <label for="premium-insurance">Premium Insurance (₹399/day)</label>
-        </div>
-      </div>
-      
-      <div class="terms-conditions">
-        <div class="terms-option">
-          <input type="checkbox" id="terms-checkbox" required>
-          <label for="terms-checkbox">I agree to the <a href="terms.html" class="terms-link" target="_blank">Terms and Conditions</a></label>
-        </div>
-      </div>
-      
-      <button type="submit" class="btn" id="submit-btn">Confirm Booking</button>
-    </form>
+  </section>
 
-    <div class="cost-summary">
-      <h3>Cost Summary</h3>
-      <div class="cost-item">
-        <span>Car Rental (<span id="days-count">0</span> days)</span>
-        <span id="rental-cost">₹0</span>
+  <!-- Terms Content -->
+  <div class="terms-container">
+    <h2 class="section-title">Drive U Terms & Conditions</h2>
+    
+    <div class="terms-content">
+      <div class="terms-section">
+        <h3><i class="fas fa-file-contract"></i> Agreement to Terms</h3>
+        <p>By accessing or using Drive U's car rental services, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not access our services.</p>
       </div>
-      <div class="cost-item">
-        <span>Insurance</span>
-        <span id="insurance-cost">₹0</span>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-user-check"></i> Eligibility</h3>
+        <p>To use our services, you must:</p>
+        <ul class="terms-list">
+          <li>Be at least 21 years of age</li>
+          <li>Possess a valid driver's license for at least 1 year</li>
+          <li>Provide a valid credit/debit card for payment and security deposit</li>
+          <li>Submit required identification documents as per government regulations</li>
+        </ul>
       </div>
-      <div class="cost-total">
-        <span>Total Amount</span>
-        <span id="total-cost">₹0</span>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-car"></i> Rental Period</h3>
+        <p>The rental period begins at the time specified in the rental agreement and continues until the vehicle is returned to our designated location.</p>
+        <div class="highlight">
+          <p><strong>Note:</strong> Late returns beyond the grace period (1 hour) will incur additional charges at 1.5x the hourly rate.</p>
+        </div>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-credit-card"></i> Payment Terms</h3>
+        <p>All rentals require:</p>
+        <ul class="terms-list">
+          <li>Payment of the full rental amount at the time of booking</li>
+          <li>A security deposit which will be refunded after vehicle inspection upon return</li>
+          <li>Additional charges for extra mileage, fuel, damages, or traffic violations if applicable</li>
+        </ul>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-gas-pump"></i> Fuel Policy</h3>
+        <p>Vehicles are provided with a full tank of fuel. Customers must return the vehicle with a full tank, otherwise refueling charges will apply at a rate higher than market prices.</p>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-ban"></i> Prohibited Uses</h3>
+        <p>The vehicle shall not be used for:</p>
+        <ul class="terms-list">
+          <li>Any illegal purpose</li>
+          <li>Racing or speed testing</li>
+          <li>Transporting hazardous materials</li>
+          <li>Driving under the influence of alcohol or drugs</li>
+          <li>Off-road driving unless specifically permitted</li>
+          <li>Transporting more passengers than the vehicle capacity</li>
+        </ul>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-exclamation-triangle"></i> Accidents & Breakdowns</h3>
+        <p>In case of an accident or breakdown:</p>
+        <ul class="terms-list">
+          <li>Immediately contact Drive U at our 24/7 helpline</li>
+          <li>File a police report if required by law</li>
+          <li>Do not admit liability or responsibility to third parties</li>
+          <li>Complete an incident report form provided by Drive U</li>
+        </ul>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-shield-alt"></i> Insurance</h3>
+        <p>All rentals include basic third-party liability insurance. Additional coverage options are available:</p>
+        <ul class="terms-list">
+          <li>Collision Damage Waiver (CDW)</li>
+          <li>Theft Protection (TP)</li>
+          <li>Personal Accident Insurance</li>
+        </ul>
+        <div class="highlight">
+          <p><strong>Important:</strong> Customers are responsible for any damages not covered by insurance or exceeding the deductible amount.</p>
+        </div>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-times-circle"></i> Cancellation Policy</h3>
+        <p>Cancellation charges apply as follows:</p>
+        <ul class="terms-list">
+          <li>More than 48 hours before pickup: Full refund</li>
+          <li>24-48 hours before pickup: 50% refund</li>
+          <li>Less than 24 hours before pickup: No refund</li>
+        </ul>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-gavel"></i> Liability</h3>
+        <p>Drive U is not liable for:</p>
+        <ul class="terms-list">
+          <li>Loss or damage to personal belongings left in the vehicle</li>
+          <li>Consequential damages resulting from vehicle breakdown</li>
+          <li>Traffic violations incurred during the rental period</li>
+          <li>Accidents caused by customer negligence</li>
+        </ul>
+      </div>
+
+      <div class="terms-section">
+        <h3><i class="fas fa-exchange-alt"></i> Changes to Terms</h3>
+        <p>We reserve the right to modify these terms at any time. Continued use of our services after changes constitutes acceptance of the modified terms.</p>
       </div>
     </div>
   </div>
@@ -796,6 +722,7 @@
           <li><a href="economy.html"><i class="fas fa-chevron-right"></i> Economy Cars</a></li>
           <li><a href="premium.html"><i class="fas fa-chevron-right"></i> Premium Cars</a></li>
           <li><a href="luxury.html"><i class="fas fa-chevron-right"></i> Luxury Cars</a></li>
+          <li><a href="terms.html"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
         </ul>
       </div>
       
@@ -816,260 +743,11 @@
   </footer>
 
   <script>
-    // Car database with prices and details
-    const carDatabase = {
-      "Hyundai i20": { 
-        price: 1499, 
-        image: "economy/ehi20.png",
-        type: "Hatchback",
-        fuel: "20 kmpl",
-        seats: "5 Seats"
-      },
-      "Maruti Suzuki Swift": { 
-        price: 1299, 
-        image: "economy/eswift.png",
-        type: "Hatchback",
-        fuel: "23 kmpl",
-        seats: "5 Seats"
-      },
-      "Tata Altroz": { 
-        price: 1399, 
-        image: "economy/ealtroz.png",
-        type: "Hatchback",
-        fuel: "19 kmpl",
-        seats: "5 Seats"
-      },
-      "Honda Amaze": { 
-        price: 1599, 
-        image: "economy/eamaze.png",
-        type: "Sedan",
-        fuel: "18 kmpl",
-        seats: "5 Seats"
-      },
-      "Hyundai Grand i10": { 
-        price: 1199, 
-        image: "economy/egrandi10.png",
-        type: "Hatchback",
-        fuel: "21 kmpl",
-        seats: "5 Seats"
-      },
-      "Maruti Baleno": { 
-        price: 1449, 
-        image: "economy/ebaleno.png",
-        type: "Hatchback",
-        fuel: "22 kmpl",
-        seats: "5 Seats"
-      },
-      "Toyota Fortuner": { 
-        price: 3999, 
-        image: "primium/pfortu.jpg",
-        type: "SUV",
-        fuel: "12 kmpl",
-        seats: "7 Seats"
-      },
-      "Hyundai Tucson": { 
-        price: 3499, 
-        image: "primium/ptucson.png",
-        type: "SUV",
-        fuel: "14 kmpl",
-        seats: "5 Seats"
-      },
-      "Skoda Octavia": { 
-        price: 3299, 
-        image: "primium/poctavia.jpg",
-        type: "Sedan",
-        fuel: "16 kmpl",
-        seats: "5 Seats"
-      },
-      "Honda City": { 
-        price: 2799, 
-        image: "primium/pciti.jpg",
-        type: "Sedan",
-        fuel: "17 kmpl",
-        seats: "5 Seats"
-      },
-      "MG Hector": { 
-        price: 3899, 
-        image: "primium/mg.jpg",
-        type: "SUV",
-        fuel: "13 kmpl",
-        seats: "5 Seats"
-      },
-      "Jeep Compass": { 
-        price: 4199, 
-        image: "primium/pjeep.jpg",
-        type: "SUV",
-        fuel: "14 kmpl",
-        seats: "5 Seats"
-      },
-      "Mercedes-Benz S-Class": { 
-        price: 12999, 
-        image: "luxury/lbsclass.png",
-        type: "Luxury Sedan",
-        fuel: "10 kmpl",
-        seats: "5 Seats"
-      },
-      "BMW 7 Series": { 
-        price: 11999, 
-        image: "luxury/lbmw7.png",
-        type: "Luxury Sedan",
-        fuel: "11 kmpl",
-        seats: "5 Seats"
-      },
-      "Audi Q7": { 
-        price: 10499, 
-        image: "luxury/laq7.png",
-        type: "Luxury SUV",
-        fuel: "9 kmpl",
-        seats: "7 Seats"
-      },
-      "Range Rover Velar": { 
-        price: 13499, 
-        image: "luxury/lrv.png",
-        type: "Luxury SUV",
-        fuel: "8 kmpl",
-        seats: "5 Seats"
-      },
-      "Porsche Cayenne": { 
-        price: 14999, 
-        image: "luxury/lporche.png",
-        type: "Luxury SUV",
-        fuel: "8 kmpl",
-        seats: "5 Seats"
-      },
-      "Jaguar F-PACE": { 
-        price: 12499, 
-        image: "luxury/lJaguar F-PACE.png",
-        type: "Luxury SUV",
-        fuel: "10 kmpl",
-        seats: "5 Seats"
-      }
-    };
-
     // Get the username from localStorage
     const userName = localStorage.getItem('userName') || 'Guest';
     
     // Update the user name display
     document.getElementById('user-name').textContent = userName;
-    
-    // Get the car name from URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const carName = urlParams.get('car') || 'Selected Car';
-    const selectedCar = carDatabase[carName] || { 
-      price: 0, 
-      image: "",
-      type: "Not specified",
-      fuel: "Not specified",
-      seats: "Not specified"
-    };
-    
-    // Display the selected car details
-    document.getElementById('selected-car-name').textContent = carName;
-    document.getElementById('car-price').textContent = `₹${selectedCar.price} / day`;
-    document.getElementById('car-type').textContent = selectedCar.type;
-    document.getElementById('car-fuel').textContent = selectedCar.fuel;
-    document.getElementById('car-seats').textContent = selectedCar.seats;
-    
-    // Set car image if available
-    if (selectedCar.image) {
-      document.getElementById('selected-car-image').src = selectedCar.image;
-    }
-    
-    // Set minimum date for pickup and return to today
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('pickup-date').setAttribute('min', today);
-    document.getElementById('return-date').setAttribute('min', today);
-    
-    // Update return date min value when pickup date changes and recalculate cost
-    document.getElementById('pickup-date').addEventListener('change', function() {
-      document.getElementById('return-date').setAttribute('min', this.value);
-      calculateTotalCost();
-    });
-    
-    // Recalculate cost when return date changes
-    document.getElementById('return-date').addEventListener('change', calculateTotalCost);
-    
-    // Calculate total cost based on days and insurance
-    function calculateTotalCost() {
-      const pickupDate = new Date(document.getElementById('pickup-date').value);
-      const returnDate = new Date(document.getElementById('return-date').value);
-      
-      // Check if dates are valid
-      if (isNaN(pickupDate) || isNaN(returnDate) || returnDate <= pickupDate) {
-        document.getElementById('days-count').textContent = '0';
-        document.getElementById('rental-cost').textContent = '₹0';
-        document.getElementById('insurance-cost').textContent = '₹0';
-        document.getElementById('total-cost').textContent = '₹0';
-        return;
-      }
-      
-      // Calculate number of days
-      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      const diffDays = Math.round(Math.abs((returnDate - pickupDate) / oneDay));
-      
-      // Calculate rental cost
-      const dailyRate = selectedCar.price;
-      const rentalCost = diffDays * dailyRate;
-      
-      // Calculate insurance cost
-      let insuranceCost = 0;
-      const basicInsurance = document.getElementById('basic-insurance').checked;
-      const premiumInsurance = document.getElementById('premium-insurance').checked;
-      
-      if (basicInsurance) {
-        insuranceCost += diffDays * 199;
-      }
-      
-      if (premiumInsurance) {
-        insuranceCost += diffDays * 399;
-      }
-      
-      // Update the cost summary
-      document.getElementById('days-count').textContent = diffDays;
-      document.getElementById('rental-cost').textContent = `₹${rentalCost.toLocaleString()}`;
-      document.getElementById('insurance-cost').textContent = `₹${insuranceCost.toLocaleString()}`;
-      document.getElementById('total-cost').textContent = `₹${(rentalCost + insuranceCost).toLocaleString()}`;
-    }
-    
-    // Handle booking form submission
-    function handleBooking(event) {
-      event.preventDefault();
-      
-      // Get form values
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const pickupDate = document.getElementById('pickup-date').value;
-      const returnDate = document.getElementById('return-date').value;
-      
-      // Validate return date is after pickup date
-      if (new Date(returnDate) <= new Date(pickupDate)) {
-        alert('Return date must be after pickup date');
-        return;
-      }
-      
-      // Get insurance details
-      let insuranceType = "None";
-      if (document.getElementById('basic-insurance').checked) {
-        insuranceType = "Basic";
-      }
-      if (document.getElementById('premium-insurance').checked) {
-        insuranceType = "Premium";
-      }
-      if (document.getElementById('basic-insurance').checked && document.getElementById('premium-insurance').checked) {
-        insuranceType = "Basic + Premium";
-      }
-      
-      // Calculate total cost for confirmation
-      calculateTotalCost();
-      const totalCost = document.getElementById('total-cost').textContent;
-      
-      // In a real application, you would send this data to a server
-      alert(`Booking confirmed!\n\nCar: ${carName}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPickup: ${pickupDate}\nReturn: ${returnDate}\nInsurance: ${insuranceType}\nTotal Cost: ${totalCost}`);
-      
-      // Redirect to home page after successful booking
-      window.location.href = 'home.html';
-    }
     
     // Toggle user menu (for future functionality)
     function toggleUserMenu() {
@@ -1093,11 +771,8 @@
       }
     }
     
-    // Initialize cost calculation on page load
-    window.onload = function() {
-      calculateTotalCost();
-      checkScreenSize();
-    };
+    // Initial check
+    checkScreenSize();
     
     // Listen for resize events
     window.addEventListener('resize', checkScreenSize);
