@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive U - Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      background: #0f172a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Layout */
+    .admin-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: rgba(15, 23, 42, 0.95);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px 0;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100%;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    .logo {
+      padding: 0 25px 25px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 25px;
+    }
+
+    .logo h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 157, 0, 0.3);
+    }
+
+    .logo p {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 5px;
+    }
+
+    .sidebar-menu {
+      flex-grow: 1;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 25px;
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.3s;
+      border-left: 4px solid transparent;
+    }
+
+    .menu-item:hover, .menu-item.active {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border-left: 4px solid #ff9900;
+    }
+
+    .menu-item i {
+      margin-right: 12px;
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .menu-item span {
+      font-weight: 500;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 260px;
+      padding: 30px;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Header */
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .header-title h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .header-title p {
+      color: #94a3b8;
+      margin-top: 5px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 15px;
+      border-radius: 10px;
+      min-width: 0;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-role {
+      font-size: 12px;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Settings Content */
+    .settings-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .settings-sidebar {
+      flex: 0 0 250px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      height: fit-content;
+    }
+
+    .settings-main {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .settings-category {
+      margin-bottom: 25px;
+    }
+
+    .settings-category h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ff9900;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .settings-nav-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      color: #cbd5e1;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .settings-nav-item:hover, .settings-nav-item.active {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    .settings-nav-item i {
+      margin-right: 10px;
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* Settings Panel */
+    .settings-panel {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: none;
+    }
+
+    .settings-panel.active {
+      display: block;
+    }
+
+    .panel-header {
+      margin-bottom: 25px;
+    }
+
+    .panel-header h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .panel-header p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #ff9900;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-hint {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 5px;
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #ff9900;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .toggle-label {
+      flex: 1;
+    }
+
+    .toggle-label h4 {
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .toggle-label p {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff3333, #ff8800);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Color Picker */
+    .color-picker {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .color-option {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+
+    .color-option.active {
+      border-color: white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Mobile Menu Toggle - FIXED: Hidden by default on desktop */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 101;
+      background: #ff9900;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Overlay for mobile */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 99;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .settings-container {
+        flex-direction: column;
+      }
+      
+      .settings-sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        width: 80px;
+        align-items: center;
+      }
+      
+      .logo, .menu-item span {
+        display: none;
+      }
+      
+      .menu-item {
+        justify-content: center;
+        padding: 15px;
+      }
+      
+      .menu-item i {
+        margin-right: 0;
+        font-size: 20px;
+      }
+      
+      .main-content {
+        margin-left: 80px;
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* FIXED: Only show menu toggle on mobile */
+      .menu-toggle {
+        display: flex;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+        width: 260px;
+        align-items: stretch;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .logo, .menu-item span {
+        display: block;
+      }
+      
+      .menu-item {
+        justify-content: flex-start;
+        padding: 15px 25px;
+      }
+      
+      .menu-item i {
+        margin-right: 12px;
+        font-size: 18px;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+        padding-top: 70px;
+      }
+      
+      .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .user-info {
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .main-content {
+        padding: 15px;
+        padding-top: 70px;
+      }
+
+      .settings-panel {
+        padding: 20px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .main-content {
+        padding: 12px;
+        padding-top: 65px;
+      }
+
+      .admin-header {
+        margin-bottom: 20px;
+      }
+
+      .header-title h2 {
+        font-size: 24px;
+      }
+
+      .settings-panel {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Menu Toggle - Now only visible on mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Overlay for mobile -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <h1>DRIVE U</h1>
+      <p>Admin Panel</p>
+    </div>
+    
+    <div class="sidebar-menu">
+      <a href="admin.html" class="menu-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="fleet_management.html" class="menu-item">
+        <i class="fas fa-car"></i>
+        <span>Fleet Management</span>
+      </a>
+      <a href="user_management.html" class="menu-item">
+        <i class="fas fa-users"></i>
+        <span>User Management</span>
+      </a>
+      <a href="reservations.html" class="menu-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Reservations</span>
+      </a>
+      <a href="analytics.html" class="menu-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+      </a>
+      <a href="settings.html" class="menu-item active">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </div>
+    
+    <a href="index.html" class="menu-item">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="admin-header">
+      <div class="header-title">
+        <h2>System Settings</h2>
+        <p>Customize and configure your platform</p>
+      </div>
+      
+      <div class="user-info">
+        <div class="user-avatar">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="user-details">
+          <div class="user-name" id="user-name">admin_1</div>
+          <div class="user-role">Administrator</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Container -->
+    <div class="settings-container">
+      <!-- Settings Sidebar -->
+      <div class="settings-sidebar">
+        <div class="settings-category">
+          <h3>General</h3>
+          <div class="settings-nav-item active" data-panel="general-settings">
+            <i class="fas fa-cog"></i>
+            <span>General Settings</span>
+          </div>
+          <div class="settings-nav-item" data-panel="appearance">
+            <i class="fas fa-paint-brush"></i>
+            <span>Appearance</span>
+          </div>
+        </div>
+        
+        <div class="settings-category">
+          <h3>Business</h3>
+          <div class="settings-nav-item" data-panel="payment-settings">
+            <i class="fas fa-credit-card"></i>
+            <span>Payment Settings</span>
+          </div>
+          <div class="settings-nav-item" data-panel="notification-settings">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+          </div>
+        </div>
+        
+        <div class="settings-category">
+          <h3>System</h3>
+          <div class="settings-nav-item" data-panel="security-settings">
+            <i class="fas fa-shield-alt"></i>
+            <span>Security</span>
+          </div>
+          <div class="settings-nav-item" data-panel="maintenance">
+            <i class="fas fa-tools"></i>
+            <span>Maintenance</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Settings Main Content -->
+      <div class="settings-main">
+        <!-- General Settings Panel -->
+        <div class="settings-panel active" id="general-settings">
+          <div class="panel-header">
+            <h3>General Settings</h3>
+            <p>Configure basic platform settings and information</p>
+          </div>
+          
+          <form id="general-settings-form">
+            <div class="form-group">
+              <label for="company-name">Company Name</label>
+              <input type="text" class="form-control" id="company-name" value="Drive U">
+            </div>
+            
+            <div class="form-group">
+              <label for="company-email">Contact Email</label>
+              <input type="email" class="form-control" id="company-email" value="contact@driveu.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="company-phone">Contact Phone</label>
+              <input type="tel" class="form-control" id="company-phone" value="+91 9876543210">
+            </div>
+            
+            <div class="form-group">
+              <label for="company-address">Business Address</label>
+              <textarea class="form-control" id="company-address">123 Tech Park, Bengaluru, Karnataka - 560001</textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="timezone">Timezone</label>
+              <select class="form-control" id="timezone">
+                <option value="IST" selected>India Standard Time (IST)</option>
+                <option value="UTC">Coordinated Universal Time (UTC)</option>
+                <option value="PST">Pacific Standard Time (PST)</option>
+                <option value="EST">Eastern Standard Time (EST)</option>
+              </select>
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="btn btn-primary" onclick="saveSettings('general')">Save Changes</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Appearance Settings Panel -->
+        <div class="settings-panel" id="appearance">
+          <div class="panel-header">
+            <h3>Appearance Settings</h3>
+            <p>Customize the look and feel of your platform</p>
+          </div>
+          
+          <form id="appearance-settings-form">
+            <div class="form-group">
+              <label for="theme-select">Theme</label>
+              <select class="form-control" id="theme-select">
+                <option value="dark" selected>Dark</option>
+                <option value="light">Light</option>
+                <option value="auto">Auto (System Preference)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Primary Color</label>
+              <div class="color-picker">
+                <div class="color-option active" style="background-color: #ff9900;" data-color="#ff9900"></div>
+                <div class="color-option" style="background-color: #3b82f6;" data-color="#3b82f6"></div>
+                <div class="color-option" style="background-color: #10b981;" data-color="#10b981"></div>
+                <div class="color-option" style="background-color: #8b5cf6;" data-color="#8b5cf6"></div>
+                <div class="color-option" style="background-color: #ec4899;" data-color="#ec4899"></div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="logo-upload">Logo</label>
+              <input type="file" class="form-control" id="logo-upload" accept="image/*">
+              <p class="form-hint">Recommended size: 200x60 pixels. Max file size: 2MB</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="favicon-upload">Favicon</label>
+              <input type="file" class="form-control" id="favicon-upload" accept="image/x-icon,image/png">
+              <p class="form-hint">Recommended size: 32x32 pixels. Max file size: 100KB</p>
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="btn btn-primary" onclick="saveSettings('appearance')">Save Changes</button>
+              <button type="reset" class="btn btn-secondary">Reset to Default</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Payment Settings Panel -->
+        <div class="settings-panel" id="payment-settings">
+          <div class="panel-header">
+            <h3>Payment Settings</h3>
+            <p>Configure payment gateways and transaction settings</p>
+          </div>
+          
+          <form id="payment-settings-form">
+            <div class="form-group">
+              <label>Payment Methods</label>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Credit/Debit Cards</h4>
+                  <p>Allow customers to pay with credit/debit cards</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>UPI Payments</h4>
+                  <p>Allow customers to pay using UPI</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Net Banking</h4>
+                  <p>Allow customers to pay via net banking</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="currency">Currency</label>
+              <select class="form-control" id="currency">
+                <option value="INR" selected>Indian Rupee (₹)</option>
+                <option value="USD">US Dollar ($)</option>
+                <option value="EUR">Euro (€)</option>
+                <option value="GBP">British Pound (£)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="tax-rate">Tax Rate (%)</label>
+              <input type="number" class="form-control" id="tax-rate" value="18" min="0" max="30" step="0.1">
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="btn btn-primary" onclick="saveSettings('payment')">Save Changes</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Notification Settings Panel -->
+        <div class="settings-panel" id="notification-settings">
+          <div class="panel-header">
+            <h3>Notification Settings</h3>
+            <p>Manage how and when notifications are sent</p>
+          </div>
+          
+          <form id="notification-settings-form">
+            <div class="form-group">
+              <label>Email Notifications</label>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>New Reservations</h4>
+                  <p>Receive email alerts for new reservations</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Reservation Updates</h4>
+                  <p>Receive email alerts for reservation changes</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>System Alerts</h4>
+                  <p>Receive email alerts for system issues</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>SMS Notifications</label>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Reservation Reminders</h4>
+                  <p>Send SMS reminders for upcoming reservations</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Promotional Messages</h4>
+                  <p>Send promotional SMS to customers</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="admin-notification-email">Admin Notification Email</label>
+              <input type="email" class="form-control" id="admin-notification-email" value="admin@driveu.com">
+              <p class="form-hint">Critical system notifications will be sent to this email</p>
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="btn btn-primary" onclick="saveSettings('notification')">Save Changes</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Security Settings Panel -->
+        <div class="settings-panel" id="security-settings">
+          <div class="panel-header">
+            <h3>Security Settings</h3>
+            <p>Configure security and privacy settings</p>
+          </div>
+          
+          <form id="security-settings-form">
+            <div class="form-group">
+              <label>Security Features</label>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Two-Factor Authentication</h4>
+                  <p>Require 2FA for admin accounts</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Password Policy</h4>
+                  <p>Enforce strong password requirements</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Session Timeout</h4>
+                  <p>Automatically log out inactive users</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="session-timeout">Session Timeout (minutes)</label>
+              <input type="number" class="form-control" id="session-timeout" value="30" min="5" max="240">
+            </div>
+            
+            <div class="form-group">
+              <label for="password-expiry">Password Expiry (days)</label>
+              <input type="number" class="form-control" id="password-expiry" value="90" min="30" max="365">
+              <p class="form-hint">Number of days before passwords must be changed</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="admin-ip-restriction">IP Restrictions</label>
+              <input type="text" class="form-control" id="admin-ip-restriction" placeholder="192.168.1.1, 10.0.0.1">
+              <p class="form-hint">Comma-separated list of IP addresses allowed to access admin panel</p>
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="btn btn-primary" onclick="saveSettings('security')">Save Changes</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Maintenance Settings Panel -->
+        <div class="settings-panel" id="maintenance">
+          <div class="panel-header">
+            <h3>Maintenance Settings</h3>
+            <p>System maintenance and update settings</p>
+          </div>
+          
+          <form id="maintenance-settings-form">
+            <div class="form-group">
+              <label for="maintenance-mode">Maintenance Mode</label>
+              <div class="toggle-container">
+                <div class="toggle-label">
+                  <h4>Enable Maintenance Mode</h4>
+                  <p>Take the system offline for maintenance</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="maintenance-mode-toggle">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <p class="form-hint">When enabled, users will see a maintenance message</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="maintenance-message">Maintenance Message</label>
+              <textarea class="form-control" id="maintenance-message" placeholder="System is currently under maintenance. We'll be back soon!">System is currently under maintenance. We'll be back soon!</textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="backup-frequency">Automatic Backup Frequency</label>
+              <select class="form-control" id="backup-frequency">
+                <option value="daily">Daily</option>
+                <option value="weekly" selected>Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="never">Never</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="last-backup">Last Backup</label>
+              <input type="text" class="form-control" id="last-backup" value="2023-10-15 02:30:15" readonly>
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="btn btn-primary" onclick="saveSettings('maintenance')">Save Changes</button>
+              <button type="button" class="btn btn-secondary" onclick="backupNow()">Backup Now</button>
+              <button type="button" class="btn btn-secondary" onclick="checkUpdates()">Check for Updates</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the admin username from localStorage
+    const userName = localStorage.getItem('userName') || 'Admin';
+    document.getElementById('user-name').textContent = userName;
+    
+    // Initialize settings page
+    document.addEventListener('DOMContentLoaded', function() {
+      initSettingsNavigation();
+      loadSavedSettings();
+    });
+
+    // Initialize settings navigation
+    function initSettingsNavigation() {
+      const navItems = document.querySelectorAll('.settings-nav-item');
+      
+      navItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Remove active class from all items
+          navItems.forEach(navItem => navItem.classList.remove('active'));
+          
+          // Add active class to clicked item
+          this.classList.add('active');
+          
+          // Hide all panels
+          const panels = document.querySelectorAll('.settings-panel');
+          panels.forEach(panel => panel.classList.remove('active'));
+          
+          // Show the selected panel
+          const panelId = this.getAttribute('data-panel');
+          document.getElementById(panelId).classList.add('active');
+        });
+      });
+    }
+
+    // Load saved settings
+    function loadSavedSettings() {
+      // In a real app, this would load from an API or localStorage
+      console.log('Loading saved settings...');
+    }
+
+    // Save settings
+    function saveSettings(type) {
+      // Show saving indicator
+      const saveBtn = event.target;
+      const originalText = saveBtn.textContent;
+      saveBtn.textContent = 'Saving...';
+      saveBtn.disabled = true;
+      
+      // Simulate API call
+      setTimeout(() => {
+        alert(`${type.charAt(0).toUpperCase() + type.slice(1)} settings saved successfully!`);
+        saveBtn.textContent = originalText;
+        saveBtn.disabled = false;
+      }, 1000);
+    }
+
+    // Backup now
+    function backupNow() {
+      alert('Starting backup process...');
+      // In a real app, this would trigger a backup API call
+      
+      // Update last backup time
+      const now = new Date();
+      document.getElementById('last-backup').value = now.toLocaleString();
+    }
+
+    // Check for updates
+    function checkUpdates() {
+      alert('Checking for updates...');
+      // In a real app, this would check for system updates
+    }
+
+    // Toggle sidebar on mobile
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    // Color picker functionality
+    const colorOptions = document.querySelectorAll('.color-option');
+    colorOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        colorOptions.forEach(opt => opt.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update the primary color in the theme
+        const newColor = this.getAttribute('data-color');
+        document.documentElement.style.setProperty('--primary-color', newColor);
+      });
+    });
+  </script>
+</body>
+</html>
