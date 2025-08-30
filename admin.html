@@ -270,7 +270,7 @@
       font-size: 12px;
     }
 
-    /* Chart Containers */
+    /* Chart Containers - FIXED */
     .charts-container {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -283,6 +283,7 @@
       border-radius: 15px;
       padding: 20px;
       height: 300px;
+      position: relative;
     }
 
     .chart-title {
@@ -291,6 +292,12 @@
       margin-bottom: 15px;
       color: #ff9900;
       text-align: center;
+    }
+
+    /* Chart canvas styling */
+    .chart-box canvas {
+      width: 100% !important;
+      height: calc(100% - 30px) !important;
     }
 
     /* Recent Activity */
@@ -406,7 +413,7 @@
       z-index: 99;
     }
 
-    /* Responsive */
+    /* Responsive - FIXED */
     @media (max-width: 1200px) {
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -414,6 +421,11 @@
       
       .charts-container {
         grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .chart-box {
+        height: 280px;
       }
     }
 
@@ -444,6 +456,10 @@
 
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .charts-container {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -499,6 +515,17 @@
         margin-top: 15px;
         width: 100%;
       }
+      
+      /* FIXED: Charts on mobile */
+      .charts-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .chart-box {
+        height: 250px;
+        min-height: 250px;
+      }
 
       .overlay.active {
         display: block;
@@ -549,7 +576,14 @@
       }
       
       .chart-box {
-        height: 250px;
+        height: 220px;
+        min-height: 220px;
+        padding: 15px;
+      }
+      
+      .chart-title {
+        font-size: 14px;
+        margin-bottom: 10px;
       }
     }
 
@@ -579,6 +613,12 @@
       .action-btn i {
         font-size: 20px;
         margin-bottom: 8px;
+      }
+      
+      .chart-box {
+        height: 200px;
+        min-height: 200px;
+        padding: 12px;
       }
     }
   </style>
@@ -807,13 +847,24 @@
       createRevenueChart();
       createVehicleChart();
       updateLiveStats();
+      
+      // Add resize listener to redraw charts on window resize
+      window.addEventListener('resize', function() {
+        createRevenueChart();
+        createVehicleChart();
+      });
     });
 
     // Create Revenue Trend Chart
     function createRevenueChart() {
-      const ctx = document.getElementById('revenueChart').getContext('2d');
+      const ctx = document.getElementById('revenueChart');
       
-      new Chart(ctx, {
+      // Destroy existing chart if it exists
+      if (ctx.chart) {
+        ctx.chart.destroy();
+      }
+      
+      ctx.chart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -862,9 +913,14 @@
 
     // Create Vehicle Distribution Chart
     function createVehicleChart() {
-      const ctx = document.getElementById('vehicleChart').getContext('2d');
+      const ctx = document.getElementById('vehicleChart');
       
-      new Chart(ctx, {
+      // Destroy existing chart if it exists
+      if (ctx.chart) {
+        ctx.chart.destroy();
+      }
+      
+      ctx.chart = new Chart(ctx, {
         type: 'doughnut',
         data: {
           labels: ['Sedan', 'SUV', 'Hatchback', 'Luxury'],
@@ -893,7 +949,10 @@
               position: 'bottom',
               labels: {
                 color: '#94a3b8',
-                padding: 15
+                padding: 15,
+                font: {
+                  size: window.innerWidth < 576 ? 10 : 12
+                }
               }
             }
           }
